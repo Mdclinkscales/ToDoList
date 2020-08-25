@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-sm">
+        <img src="~/Images/atlas.png" alt="big rock">
+    </div>
+    <div class="col-sm">
+        <h4>Completed Tasks</h4>
+        <ol>
+            @foreach (var task in ViewBag.Complete)
+            {
+                <li>@task.Title @task.UpdatedAt GMT</li>
+            }
+        </ol>
+    </div>
+</div>

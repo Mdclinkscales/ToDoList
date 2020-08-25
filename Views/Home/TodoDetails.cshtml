@@ -1,0 +1,36 @@
+@model Todo
+
+<div class="container-fluid">
+    <div class="row">
+        <h1>@Model.Title</h1>
+    </div>
+    <h3>Task Giver: @ViewBag.Giver.FirstName @ViewBag.Giver.LastName</h2>
+    <h4>Due Date: @Model.DueDate GMT</h3>
+    <h6>Description:</h3>
+    <p>@Model.Description</p>
+    @if(ViewBag.User!=null){
+        <form action="/rsvpdetails" method="POST">
+            <input type="hidden" name="UserId" value="@ViewBag.User.UserId">
+            <input type="hidden" name="TodoId" value="@Model.TodoId">
+            @if(ViewBag.User.UserId==1){
+                <input type="submit" value="Complete" class="btn btn-danger">
+            }
+            else{
+                if(Model.Supporters.Any(a=>a.UserId==ViewBag.User.UserId))
+                {
+                    <input type="submit" value="Remove Support" class="btn btn-primary">
+                }
+                else{
+                    <input type="submit" value="Support" class="btn btn-primary">
+                }
+            }
+        </form>
+    }
+    <h6>List of Supporters:</h6>
+    <ul>
+    @if(Model.Supporters.Count!=0){@foreach (var person in Model.Supporters)
+    {
+        <li>@person.User.FirstName @person.User.LastName</li>
+    }}
+    </ul>
+</div>
