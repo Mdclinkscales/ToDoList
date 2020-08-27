@@ -103,7 +103,7 @@ namespace Office.Controllers
         {
             if(HttpContext.Session.GetInt32("UserId")!=null)
             {
-                ViewBag.loggeduser = HttpContext.Session.GetInt32("UserId");
+                ViewBag.User = HttpContext.Session.GetInt32("UserId");
                 return View();
             }
             else
@@ -196,6 +196,8 @@ namespace Office.Controllers
         {
             ViewBag.Complete = _context.Todos
                 .Where(t=>t.Completed==true)
+                .Where(t=>t.UpdatedAt>DateTime.Now.AddDays(-7))
+                .OrderBy(t=>t.UpdatedAt)
                 .ToList();
             return View();
         }

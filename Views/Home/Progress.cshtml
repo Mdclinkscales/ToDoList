@@ -3,11 +3,11 @@
         <img src="~/Images/atlas.png" alt="big rock">
     </div>
     <div class="col-sm">
-        <h4>Completed Tasks</h4>
+        <h4>Weekly Completed Tasks</h4>
         <ol>
             @foreach (var task in ViewBag.Complete)
             {
-                <li>@task.Title @task.UpdatedAt GMT</li>
+                <li>@task.Title @task.UpdatedAt</li>
             }
         </ol>
     </div>
