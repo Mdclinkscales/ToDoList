@@ -4,7 +4,7 @@
 @model List<Todo>;
 
 <div class="row">
-    <div class="col-2">
+    <div class="col-2  pattern-dots-md">
         @if(Model.Count<1){
             <img src="~/Images/done.png" alt="No Work" class="img-fluid">
         }
@@ -16,6 +16,10 @@
         }
         @if(Model.Count>9){
             <img src="~/Images/toomuch.png" alt="Lots Work" class="img-fluid">
+            <h6 class="bg-light">So... Many... Tasks...</h6>
+        }
+        @if((int)DateTime.Now.DayOfWeek==5){
+            <img src="~/Images/friday.png" alt="friday" class="img-fluid">
         }
     </div>
     <div class="col-8">
@@ -51,7 +55,7 @@
                         @if(activity.Difficulty>2&activity.Difficulty<5){
                             <td class="bg-warning">@activity.Difficulty</td>
                         }
-                        else{
+                        @if(activity.Difficulty<2){
                             <td class="bg-success">@activity.Difficulty</td>
                         }
                         
@@ -83,12 +87,15 @@
         </table>
         <a class="btn float-right btn-primary" href="/Todoform">Add a Task!</a>
     </div>
-    <div class="col-2">
+    <div class="col-2  pattern-dots-md">
         @if(Model.Any(e=>e.Title.Contains("Eat"))){
             <img src="~/Images/eat.png" alt="eat" class="img-fluid">
         }
         @if(Model.Any(e=>e.Title.Contains("offee"))){
             <img src="~/Images/coffee.png" alt="coffee" class="img-fluid">
+        }
+        @if(Model.Any(e=>e.Title.Contains("xercise"))){
+            <img src="~/Images/exercise.png" alt="exercise" class="img-fluid">
         }
     </div>
 </div>

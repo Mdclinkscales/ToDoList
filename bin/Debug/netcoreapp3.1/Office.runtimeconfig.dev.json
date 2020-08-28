@@ -2,7 +2,8 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
       "C:\\Users\\mdcli\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\mdcli\\.nuget\\packages"
+      "C:\\Users\\mdcli\\.nuget\\packages",
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ]
   }
 }
