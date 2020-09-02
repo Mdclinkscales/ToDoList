@@ -15,22 +15,6 @@
             @if(ViewBag.User.UserId==1){
                 <input type="submit" value="Complete" class="btn btn-danger">
             }
-            else{
-                if(Model.Supporters.Any(a=>a.UserId==ViewBag.User.UserId))
-                {
-                    <input type="submit" value="Remove Support" class="btn btn-primary">
-                }
-                else{
-                    <input type="submit" value="Support" class="btn btn-primary">
-                }
-            }
         </form>
     }
-    <h6>List of Supporters:</h6>
-    <ul>
-    @if(Model.Supporters.Count!=0){@foreach (var person in Model.Supporters)
-    {
-        <li>@person.User.FirstName @person.User.LastName</li>
-    }}
-    </ul>
 </div>

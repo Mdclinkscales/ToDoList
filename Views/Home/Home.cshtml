@@ -21,6 +21,9 @@
         @if((int)DateTime.Now.DayOfWeek==5){
             <img src="~/Images/friday.png" alt="friday" class="img-fluid">
         }
+        @if((int)DateTime.Now.Hour>21){
+            <img src="~/Images/gotosleep.png" alt="late" class="img-fluid">
+        }
     </div>
     <div class="col-8">
         <h2>Tasks yet to be completed</h2>
@@ -31,10 +34,8 @@
                 <th> Due Time</th>
                 <th>  Difficulty  </th>
                 <th>  Task Creator  </th>
-                <th>  No. of Supporters  </th>
-                @if(ViewBag.User!=null){
-                    <th>Actions</th>
-                }
+                <th>   Actions   </th>
+                
             </thead>
             <tbody>
                 @foreach (var activity in Model)
@@ -55,12 +56,11 @@
                         @if(activity.Difficulty>2&activity.Difficulty<5){
                             <td class="bg-warning">@activity.Difficulty</td>
                         }
-                        @if(activity.Difficulty<2){
+                        @if(activity.Difficulty<=2){
                             <td class="bg-success">@activity.Difficulty</td>
                         }
                         
                         <td>@activity.Giver.FirstName @activity.Giver.LastName</td>
-                        <td>@activity.Supporters.Count</td>
                         @if(ViewBag.User!=null){
                             <td>
                                 <form action="/rsvp" method="POST">
@@ -96,6 +96,12 @@
         }
         @if(Model.Any(e=>e.Title.Contains("xercise"))){
             <img src="~/Images/exercise.png" alt="exercise" class="img-fluid">
+        }
+        @if(Model.Any(e=>e.Title.Contains("aundry"))){
+            <img src="~/Images/laundry.png" alt="laundry" class="img-fluid">
+        }
+        @if(Model.Any(e=>e.Title.Contains("Clean"))){
+            <img src="~/Images/clean.png" alt="clean" class="img-fluid">
         }
     </div>
 </div>

@@ -199,6 +199,11 @@ namespace Office.Controllers
                 .Where(t=>t.UpdatedAt>DateTime.Now.AddDays(-7))
                 .OrderBy(t=>t.UpdatedAt)
                 .ToList();
+            if(HttpContext.Session.GetInt32("UserId")!=null)
+            {
+                ViewBag.User = HttpContext.Session.GetInt32("UserId");
+                return View();
+            }
             return View();
         }
         public IActionResult Privacy()
